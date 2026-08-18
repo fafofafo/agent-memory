@@ -5,7 +5,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
-[![CI](https://github.com/<your-user>/agent-memory/actions/workflows/ci.yml/badge.svg)](https://github.com/<your-user>/agent-memory/actions/workflows/ci.yml)
+[![CI](https://github.com/fafofafo/agent-memory/actions/workflows/ci.yml/badge.svg)](https://github.com/fafofafo/agent-memory/actions/workflows/ci.yml)
 ![Tests](https://img.shields.io/badge/tests-79%20passed-green)
 ![Stress](https://img.shields.io/badge/stress-150%20memories%20OK-green)
 
