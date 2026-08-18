@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+
+# Runtime data & secrets — never commit
+data/
+*.env
+!.env.example
+.master_key
+.vector_backend_state.json
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/

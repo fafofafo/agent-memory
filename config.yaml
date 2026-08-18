@@ -1,0 +1,67 @@
+# Agent Memory 配置（单一配置源）
+# 所有房间、映射、检索参数只在这里维护，代码加载本文件，杜绝硬编码副本。
+
+rooms:
+  prefs:
+    name: "偏好"
+    description: "用户偏好设置、沟通风格、工作习惯"
+    icon: "⭐"
+    retention_days: 365
+  decisions:
+    name: "决策"
+    description: "重要决定记录（技术选型、方案取舍）"
+    icon: "✅"
+    retention_days: 730
+  configs:
+    name: "配置"
+    description: "系统配置信息（端口、路径、运行参数）"
+    icon: "⚙️"
+    retention_days: 365
+  projects:
+    name: "项目"
+    description: "项目相关记忆（进展、背景、目标）"
+    icon: "📁"
+    retention_days: 545
+  events:
+    name: "事件"
+    description: "对话历史事件、讨论、想法"
+    icon: "📅"
+    retention_days: 90
+
+# 记忆类别 -> 房间映射
+category_mapping:
+  preference: prefs
+  decision: decisions
+  config: configs
+  project: projects
+  event: events
+  discussion: events
+  idea: events
+  general: events
+
+retrieval:
+  default_top_k: 5
+  min_score: 0.5          # 低于此分数视为不相关
+  time_decay_days: 90     # 90 天内无时间衰减
+  weight_importance: 0.4
+  weight_frequency: 0.5
+  weight_verified: 0.15   # 已验证记忆的加成
+  boost_verified: 1.15
+  hot_threshold: 5        # 访问次数 ≥5 视为热记忆
+  hot_boost: 1.1          # 热记忆检索权重加成
+
+pruning:
+  unverified_retention_days: 7   # 未验证记忆短留（默认执行验证原则）
+  low_frequency_days: 30         # 低频（访问<3 次）记忆 30 天
+  low_frequency_threshold: 3
+  critical_importance: 10        # 重要性=10 永久保留
+  default_retention_days: 90
+
+security:
+  # 敏感信息脱敏规则：命中则原文不落盘
+  redact_patterns:
+    - "((?:密码|口令|passwd|password)(?:\\s*(?:是|为|[:：=])\\s*|\\s+))([^\\s,，。;；]+)"
+    - "((?:api[_-]?key|apikey|access[_-]?key|密钥)(?:\\s*(?:是|为|[:：=])\\s*|\\s+))([^\\s,，。;；]+)"
+    - "((?:token|secret|授权码)(?:\\s*(?:是|为|[:：=])\\s*|\\s+))([^\\s,，。;；]+)"
+    - "(sk-[A-Za-z0-9_\\-]{8,})"
+    - "(Bearer\\s+[A-Za-z0-9_\\-\\.]{10,})"
