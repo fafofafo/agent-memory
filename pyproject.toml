@@ -1,0 +1,29 @@
+[project]
+name = "agent-memory"
+version = "3.0.0"
+description = "Universal memory / learning / evolution infrastructure for AI agents: cross-session memory, auto-sedimentation, hybrid retrieval (BM25+vector+Rerank), memory graph"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+authors = [{ name = "Agent Memory Contributors" }]
+keywords = ["memory", "agent", "llm", "rag", "skill", "retrieval"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+# Core is zero third-party dependencies (pure standard library)
+dependencies = []
+
+[project.optional-dependencies]
+yaml = ["PyYAML>=5.0"]          # config.yaml loading (falls back to embedded defaults)
+crypto = ["cryptography>=3.0"]  # optional AES encryption (HERMES_ENCRYPT=on)
+dev = ["pytest"]
+
+[project.scripts]
+agent-memory = "hermes_lite:main"
+
+[tool.pytest.ini_options]
+testpaths = ["test_hermes_lite.py"]

@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install optional deps
+        run: |
+          pip install --quiet PyYAML cryptography
+
+      - name: Run test suite
+        run: python test_hermes_lite.py
+
+      - name: Run stress test
+        run: python test_stress.py
+
+      - name: Validate skill frontmatter
+        run: |
+          python - <<'EOF'
+          import yaml, re, pathlib
+          for p in pathlib.Path('skills').rglob('SKILL.md'):
+              fm = yaml.safe_load(re.match(r'^---\n(.*?)\n---\n', p.read_text(), re.DOTALL).group(1))
+              assert fm.get('name') and fm.get('description'), f'{p}: name/description required'
+              print(f'OK {p} ({fm["name"]})')
+          EOF
