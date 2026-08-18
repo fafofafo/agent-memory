@@ -108,6 +108,21 @@ JINA_API_KEY=jina_xxxx          # vector, international (optional)
 - [Dependencies Checklist](docs/AgentMemory-Dependencies.md) / [依赖清单](docs/AgentMemory-依赖清单.md)
 - [Token Savings Analysis](docs/Token节省实测分析报告v2.md)
 
+## 💎 Pro Version — $10
+
+Get the full evaluation pack: 200 synthetic memories, evaluation harness, decay tuning guide, and 1-year updates:
+
+**https://gumroad.com/l/agentmemory**
+
+| Feature | Free (GitHub) | Pro ($10) |
+|---------|---------------|------------|
+| SKILL.md (EN) | ✅ Yes | ✅ Yes |
+| `hermes_lite.py` core | ✅ Yes | ✅ Yes |
+| Evaluation harness | ❌ No | ✅ Yes |
+| 200 synthetic memories | ❌ No | ✅ Yes |
+| Decay tuning guide | ❌ No | ✅ Yes |
+| 1-year updates | ❌ No | ✅ Yes |
+
 ## 📄 License
 
 [MIT](LICENSE) © 2026 Agent Memory Contributors. Free to use, modify, distribute, and sell.
