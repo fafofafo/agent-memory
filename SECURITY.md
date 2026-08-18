@@ -12,7 +12,7 @@
 **Please do not open a public GitHub issue for security vulnerabilities.** Use one of the private channels:
 
 - GitHub Private Vulnerability Reporting: navigate to the repository's **Security → Report a vulnerability** (preferred).
-- Email: `security@<your-domain>` (replace with your address before publishing).
+- Email: `fafofafo@users.noreply.github.com` (GitHub noreply address, forwards to the account's primary email).
 
 Please include:
 - The affected version and component (e.g., redaction, encryption, retrieval).
